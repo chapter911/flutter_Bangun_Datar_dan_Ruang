@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
 
 class Konstant {
   List<String> bangunDatar = [

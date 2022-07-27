@@ -1,4 +1,18 @@
-import 'package:bangun_datar_dan_ruang/bangunruang/persegipage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/belahketupatpage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/jajargenjangpage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/layanglayangpage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/lingkaranpage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/persegipage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/persegipanjangpage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/segitigapage.dart';
+import 'package:bangun_datar_dan_ruang/bangundatar/trapesiumpage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/balokpage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/bolapage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/kerucutpage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/kubuspage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/limaspage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/prismapage.dart';
+import 'package:bangun_datar_dan_ruang/bangunruang/tabungpage.dart';
 import 'package:bangun_datar_dan_ruang/konstant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,66 +47,85 @@ class _DashboardPageState extends State<DashboardPage> {
       listMateri.add(
         InkWell(
           onTap: () {
-            if (Konstant().bangunDatar[i] == "Persegi") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Persegi Panjang") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Segitiga") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Jajar Genjang") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Trapesium") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Belah Ketupat") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Layang-layang") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Lingkaran") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Kubus") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Balok") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Prisma") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Limas") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Tabung") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Kerucut") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
-            } else if (Konstant().bangunDatar[i] == "Bola") {
-              Get.to(() => const PersegiPage(),
-                  transition: Transition.rightToLeft,
-                  duration: const Duration(seconds: 1));
+            if (isDatar) {
+              if (Konstant().bangunDatar[i] == "Persegi") {
+                Get.to(() => const PersegiPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Persegi Panjang") {
+                Get.to(() => const PersegiPanjangPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Segitiga") {
+                Get.to(() => const SegitigaPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Jajar Genjang") {
+                Get.to(() => const JajarGenjang(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Trapesium") {
+                Get.to(() => const TrapesiumPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Belah Ketupat") {
+                Get.to(() => const BelahKetupatPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Layang-layang") {
+                Get.to(() => const LayangLayangPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunDatar[i] == "Lingkaran") {
+                Get.to(() => const LingkaranPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              }
+            } else if (!isDatar) {
+              if (Konstant().bangunRuang[i] == "Kubus") {
+                Get.to(() => const KubusPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Balok") {
+                Get.to(() => const BalokPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Prisma") {
+                Get.to(() => const PrismaPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Limas") {
+                Get.to(() => const LimasPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Tabung") {
+                Get.to(() => const TabungPage(),
+                    arguments: Konstant().bangunDatar[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Kerucut") {
+                Get.to(() => const KerucutPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              } else if (Konstant().bangunRuang[i] == "Bola") {
+                Get.to(() => const BolaPage(),
+                    arguments: Konstant().bangunRuang[i],
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(seconds: 1));
+              }
             }
           },
           child: Card(
