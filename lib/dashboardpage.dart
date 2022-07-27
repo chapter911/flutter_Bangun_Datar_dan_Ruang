@@ -50,7 +50,11 @@ class _DashboardPageState extends State<DashboardPage> {
             if (isDatar) {
               if (Konstant().bangunDatar[i] == "Persegi") {
                 Get.to(() => const PersegiPage(),
-                    arguments: Konstant().bangunDatar[i],
+                    arguments: [
+                      Konstant().bangunDatar[i],
+                      Konstant().rBangunDatar[i],
+                      Konstant().keteranganDatar[i],
+                    ],
                     transition: Transition.rightToLeft,
                     duration: const Duration(seconds: 1));
               } else if (Konstant().bangunDatar[i] == "Persegi Panjang") {
