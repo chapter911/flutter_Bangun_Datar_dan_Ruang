@@ -163,19 +163,24 @@ Card rumus(String jenis) {
     keteranganrumus =
         "Luas = π x r² atau ¼ x π x d²\nKeliling = 2 x π x r atau π x d";
   } else if (jenis == "Kubus") {
-    keteranganrumus = "";
+    keteranganrumus = "Volume = s³\nLuas Permukaan = 6 x s²";
   } else if (jenis == "Balok") {
-    keteranganrumus = "";
+    keteranganrumus =
+        "Volume = panjang x lebar x tinggi\nLuas Permukaan = 2 x {(p x l) + (p x t) + (l x t)}";
   } else if (jenis == "Prisma") {
-    keteranganrumus = "";
+    keteranganrumus =
+        "Volume = luas alas x tinggi prisma\nLuas Permukaan = (2 x Luas alas) + (Keliling alas x Tinggi)";
   } else if (jenis == "Limas") {
-    keteranganrumus = "";
+    keteranganrumus =
+        "Volume = 1/3 * luas alas x tinggi\nLuas Permukaan = Luas alas + jumlah Luas semua sisi tegak";
   } else if (jenis == "Tabung") {
-    keteranganrumus = "";
+    keteranganrumus =
+        "Volume = luas alas x tinggi\nLuas Selimut = 2 x π x r x t\nLuas Permukaan = 2 x π x r x (r + t)";
   } else if (jenis == "Kerucut") {
-    keteranganrumus = "";
+    keteranganrumus =
+        "Volume = 1/3 x π x r² x tinggi\nLuas Selimut = π x r x s\nLuas Permukaan = π x r x (r + s)";
   } else if (jenis == "Bola") {
-    keteranganrumus = "";
+    keteranganrumus = "Volume = 4/3 x π x r³\nLuas Permukaan = 4 x π x r²";
   }
   return Card(
     color: warnaPrimary,
