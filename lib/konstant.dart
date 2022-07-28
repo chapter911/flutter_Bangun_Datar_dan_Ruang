@@ -1,6 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:package_info/package_info.dart';
 
 class Konstant {
+  Future<String> getAppVersion() async {
+    if (Platform.isAndroid) {
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      return packageInfo.version;
+    } else {
+      return "22.7.1";
+    }
+  }
+
   List<String> bangunDatar = [
     "Persegi",
     "Persegi Panjang",
@@ -132,5 +145,94 @@ class Konstant {
           );
         },
         icon: const Icon(Icons.info));
+  }
+
+  Card keterangan(BuildContext context, String gambar, String keterangan) {
+    return Card(
+      color: Colors.green,
+      elevation: 10,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      child: Container(
+        width: double.maxFinite,
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          backgroundColor: Colors.green,
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                child: Image.asset(
+                                  "assets/$gambar.png",
+                                  color: Colors.white,
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.red,
+                                ),
+                                child: const Text("Tutup"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      "assets/$gambar.png",
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Center(
+                    child: Text(
+                      keterangan,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(
+              color: Colors.white,
+              thickness: 2,
+            ),
+            const Text(
+              "Klik Pada Gambar Untuk Memperbesar",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

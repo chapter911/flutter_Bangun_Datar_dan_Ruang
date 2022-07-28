@@ -1,7 +1,7 @@
 import 'package:bangun_datar_dan_ruang/dashboardpage.dart';
+import 'package:bangun_datar_dan_ruang/konstant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:package_info/package_info.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -16,18 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    getAppVersion();
+    Konstant().getAppVersion().then((value) {
+      _appversion = value;
+    });
 
     Future.delayed(const Duration(seconds: 1)).then((value) {
       Get.offAll(() => const DashboardPage(),
           transition: Transition.fade, duration: const Duration(seconds: 1));
-    });
-  }
-
-  Future<void> getAppVersion() async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    setState(() {
-      _appversion = packageInfo.version;
     });
   }
 
