@@ -133,13 +133,7 @@ class _PersegiPanjangPageState extends State<PersegiPanjangPage> {
               ),
               TextField(
                 controller: _luas,
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                  signed: false,
-                ),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
-                ],
+                enabled: false,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
@@ -166,13 +160,7 @@ class _PersegiPanjangPageState extends State<PersegiPanjangPage> {
               ),
               TextField(
                 controller: _keliling,
-                keyboardType: const TextInputType.numberWithOptions(
-                  decimal: true,
-                  signed: false,
-                ),
-                inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
-                ],
+                enabled: false,
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
