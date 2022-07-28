@@ -1,5 +1,5 @@
 import 'package:bangun_datar_dan_ruang/dashboardpage.dart';
-import 'package:bangun_datar_dan_ruang/konstant.dart';
+import 'package:bangun_datar_dan_ruang/constant/constantstring.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Konstant().getAppVersion().then((value) {
+    getAppVersion().then((value) {
       _appversion = value;
     });
 

@@ -23,41 +23,6 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Card(
-            color: Colors.green,
-            elevation: 10,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(10),
-              ),
-            ),
-            child: Container(
-              width: double.maxFinite,
-              margin: const EdgeInsets.all(10),
-              child: Column(
-                children: const [
-                  Text(
-                    "RUMUS",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.white,
-                    thickness: 2,
-                  ),
-                  Text(
-                    "Luas = ½ x (AB + CD) x tinggi\nKeliling = AB + BC + CD + DA",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Container(
             margin: const EdgeInsets.all(5),
             child: Column(
@@ -71,6 +36,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _sisiab,
+                  textInputAction: TextInputAction.next,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -104,6 +70,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _sisicd,
+                  textInputAction: TextInputAction.next,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -137,6 +104,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _sisibc,
+                  textInputAction: TextInputAction.next,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -170,6 +138,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _sisiad,
+                  textInputAction: TextInputAction.next,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -203,6 +172,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _tinggi,
+                  textInputAction: TextInputAction.done,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -236,6 +206,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _luas,
+                  enabled: false,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,
@@ -269,6 +240,7 @@ class _TrapesiumPageState extends State<TrapesiumPage> {
                 ),
                 TextField(
                   controller: _keliling,
+                  enabled: false,
                   keyboardType: const TextInputType.numberWithOptions(
                     decimal: true,
                     signed: false,

@@ -1,3 +1,4 @@
+import 'package:bangun_datar_dan_ruang/constant/constantstring.dart';
 import 'package:bangun_datar_dan_ruang/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,8 +17,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Bangun Datar dan Ruang',
       theme: ThemeData(
-          primarySwatch: Colors.green,
-          textTheme: GoogleFonts.poppinsTextTheme()),
+        primarySwatch: warnaPrimary,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xff00695c),
+        ),
+      ),
       home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
     );

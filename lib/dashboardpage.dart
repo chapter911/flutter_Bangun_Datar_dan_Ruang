@@ -1,5 +1,6 @@
+import 'package:bangun_datar_dan_ruang/constant/constantwidget.dart';
 import 'package:bangun_datar_dan_ruang/detailpage.dart';
-import 'package:bangun_datar_dan_ruang/konstant.dart';
+import 'package:bangun_datar_dan_ruang/constant/constantstring.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,8 +27,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void getMateri() {
     listMateri = [];
 
-    int totaldata =
-        isDatar ? Konstant().bangunDatar.length : Konstant().bangunRuang.length;
+    int totaldata = isDatar ? bangunDatar.length : bangunRuang.length;
 
     for (int i = 0; i < totaldata; i++) {
       listMateri.add(
@@ -36,60 +36,62 @@ class _DashboardPageState extends State<DashboardPage> {
             isDatar
                 ? Get.to(() => const DetailPage(),
                     arguments: [
-                      Konstant().bangunDatar[i],
-                      Konstant().rBangunDatar[i],
-                      Konstant().keteranganDatar[i],
+                      bangunDatar[i],
+                      rBangunDatar[i],
+                      keteranganDatar[i],
                       isDatar,
                     ],
                     transition: Transition.rightToLeft,
                     duration: const Duration(seconds: 1))
                 : Get.to(() => const DetailPage(),
                     arguments: [
-                      Konstant().bangunRuang[i],
-                      Konstant().rBangunRuang[i],
-                      Konstant().keteranganRuang[i],
+                      bangunRuang[i],
+                      rBangunRuang[i],
+                      keteranganRuang[i],
                       isDatar,
                     ],
                     transition: Transition.rightToLeft,
                     duration: const Duration(seconds: 1));
           },
           child: Card(
-            color: Colors.green,
+            color: warnaPrimary,
             elevation: 5,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  flex: 4,
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    child: Image.asset(
-                      isDatar
-                          ? "assets/${Konstant().gBangunDatar[i]}.png"
-                          : "assets/${Konstant().gBangunRuang[i]}.png",
-                      color: Colors.white,
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: SizedBox(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    flex: 4,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        isDatar
+                            ? "assets/${gBangunDatar[i]}.png"
+                            : "assets/${gBangunRuang[i]}.png",
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Center(
-                    child: Container(
-                      height: double.maxFinite,
-                      width: double.maxFinite,
-                      color: Colors.grey[300],
-                      child: Center(
-                        child: Text(
-                          isDatar
-                              ? Konstant().bangunDatar[i]
-                              : Konstant().bangunRuang[i],
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                  Flexible(
+                    flex: 1,
+                    child: Center(
+                      child: Container(
+                        color: Colors.grey[300],
+                        child: Center(
+                          child: Text(
+                            isDatar ? bangunDatar[i] : bangunRuang[i],
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -103,7 +105,7 @@ class _DashboardPageState extends State<DashboardPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(_title),
-        actions: [Konstant().information(context)],
+        actions: [information(context)],
       ),
       body: Stack(
         children: [
@@ -129,7 +131,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: isDatar ? Colors.red[800] : Colors.green,
+                          primary: isDatar ? Colors.red[800] : warnaPrimary,
                         ),
                         child: const Text(
                           "Bangun Datar",
@@ -150,7 +152,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: isDatar ? Colors.green : Colors.red[800],
+                          primary: isDatar ? warnaPrimary : Colors.red[800],
                         ),
                         child: const Text(
                           "Bangun Ruang",

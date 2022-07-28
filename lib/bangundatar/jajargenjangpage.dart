@@ -20,41 +20,6 @@ class _JajarGenjangState extends State<JajarGenjang> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.green,
-          elevation: 10,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          child: Container(
-            width: double.maxFinite,
-            margin: const EdgeInsets.all(10),
-            child: Column(
-              children: const [
-                Text(
-                  "RUMUS",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 2,
-                ),
-                Text(
-                  "Luas = alas x tinggi\nKeliling = 2 x (AB + BC)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
         Container(
           margin: const EdgeInsets.all(5),
           child: Column(
@@ -68,6 +33,7 @@ class _JajarGenjangState extends State<JajarGenjang> {
               ),
               TextField(
                 controller: _alas,
+                textInputAction: TextInputAction.next,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
@@ -101,6 +67,7 @@ class _JajarGenjangState extends State<JajarGenjang> {
               ),
               TextField(
                 controller: _sisi,
+                textInputAction: TextInputAction.next,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
@@ -134,6 +101,7 @@ class _JajarGenjangState extends State<JajarGenjang> {
               ),
               TextField(
                 controller: _tinggi,
+                textInputAction: TextInputAction.done,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
@@ -167,6 +135,7 @@ class _JajarGenjangState extends State<JajarGenjang> {
               ),
               TextField(
                 controller: _luas,
+                enabled: false,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
@@ -200,6 +169,7 @@ class _JajarGenjangState extends State<JajarGenjang> {
               ),
               TextField(
                 controller: _keliling,
+                enabled: false,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,

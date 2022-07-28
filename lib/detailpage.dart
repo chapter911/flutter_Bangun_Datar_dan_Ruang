@@ -13,7 +13,7 @@ import 'package:bangun_datar_dan_ruang/bangunruang/kubuspage.dart';
 import 'package:bangun_datar_dan_ruang/bangunruang/limaspage.dart';
 import 'package:bangun_datar_dan_ruang/bangunruang/prismapage.dart';
 import 'package:bangun_datar_dan_ruang/bangunruang/tabungpage.dart';
-import 'package:bangun_datar_dan_ruang/konstant.dart';
+import 'package:bangun_datar_dan_ruang/constant/constantwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,13 +27,15 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   Widget _bangun = Container();
   bool isDatar = false;
-  String jenis = "";
+  String jenis = "", gambarrumus = "", keteranganbangun = "";
 
   @override
   void initState() {
     super.initState();
     setState(() {
       jenis = Get.arguments[0];
+      gambarrumus = Get.arguments[1];
+      keteranganbangun = Get.arguments[2];
       isDatar = Get.arguments[3];
     });
     refresh();
@@ -81,10 +83,9 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(jenis),
-        actions: [Konstant().information(context)],
+        actions: [information(context)],
       ),
       body: Stack(
         children: [
@@ -96,14 +97,20 @@ class _DetailPageState extends State<DetailPage> {
           ),
           Container(
             margin: const EdgeInsets.all(5),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Konstant()
-                      .keterangan(context, Get.arguments[1], Get.arguments[2]),
-                  _bangun
-                ],
-              ),
+            child: Column(
+              children: [
+                keterangan(context, gambarrumus, keteranganbangun),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        rumus(jenis),
+                        _bangun,
+                      ],
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         ],

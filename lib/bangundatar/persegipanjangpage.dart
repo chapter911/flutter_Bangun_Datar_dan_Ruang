@@ -19,41 +19,6 @@ class _PersegiPanjangPageState extends State<PersegiPanjangPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.green,
-          elevation: 10,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          child: Container(
-            width: double.maxFinite,
-            margin: const EdgeInsets.all(10),
-            child: Column(
-              children: const [
-                Text(
-                  "RUMUS",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 2,
-                ),
-                Text(
-                  "Luas = panjang x lebar\nKeliling = 2 x (panjang + lebar)",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
         Container(
           margin: const EdgeInsets.all(5),
           child: Column(
@@ -67,6 +32,7 @@ class _PersegiPanjangPageState extends State<PersegiPanjangPage> {
               ),
               TextField(
                 controller: _panjang,
+                textInputAction: TextInputAction.next,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
@@ -100,6 +66,7 @@ class _PersegiPanjangPageState extends State<PersegiPanjangPage> {
               ),
               TextField(
                 controller: _lebar,
+                textInputAction: TextInputAction.done,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,

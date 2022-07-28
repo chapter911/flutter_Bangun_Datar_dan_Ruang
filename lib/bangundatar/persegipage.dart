@@ -19,41 +19,6 @@ class _PersegiPageState extends State<PersegiPage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.green,
-          elevation: 10,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          child: Container(
-            width: double.maxFinite,
-            margin: const EdgeInsets.all(10),
-            child: Column(
-              children: const [
-                Text(
-                  "RUMUS",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Divider(
-                  color: Colors.white,
-                  thickness: 2,
-                ),
-                Text(
-                  "Luas = sisi x sisi\nKeliling = 4 x sisi",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
         Container(
           margin: const EdgeInsets.all(5),
           child: Column(
@@ -194,18 +159,6 @@ class _PersegiPageState extends State<PersegiPage> {
             ],
           ),
         ),
-        // Container(
-        //   margin: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-        //   width: double.maxFinite,
-        //   child: ElevatedButton(
-        //     onPressed: () {},
-        //     style: ElevatedButton.styleFrom(
-        //       padding: const EdgeInsets.all(20),
-        //       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        //     ),
-        //     child: const Text("HITUNG"),
-        //   ),
-        // ),
       ],
     );
   }
