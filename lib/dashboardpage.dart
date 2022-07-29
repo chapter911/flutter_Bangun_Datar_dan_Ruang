@@ -144,7 +144,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -174,23 +174,19 @@ class _DashboardPageState extends State<DashboardPage> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(10),
-                  child: Expanded(
-                    child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        children: listMateriDatar),
-                  ),
+                  child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      children: listMateriDatar),
                 ),
                 Container(
                   padding: const EdgeInsets.all(10),
-                  child: Expanded(
-                    child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        children: listMateriRuang),
-                  ),
+                  child: GridView.count(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      children: listMateriRuang),
                 ),
               ],
             ),

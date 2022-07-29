@@ -16,6 +16,7 @@ import 'package:bangun_datar_dan_ruang/bangunruang/tabungpage.dart';
 import 'package:bangun_datar_dan_ruang/constant/constantwidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -29,9 +30,15 @@ class _DetailPageState extends State<DetailPage> {
   bool isDatar = false;
   String jenis = "", gambarrumus = "", keteranganbangun = "";
 
+  BannerAd? _bannerAd;
+  bool isAdLoaded = false;
+
+  int maxFailedLoadAttempts = 3;
+
   @override
   void initState() {
     super.initState();
+    _createBanner();
     setState(() {
       jenis = Get.arguments[0];
       gambarrumus = Get.arguments[1];
@@ -80,6 +87,23 @@ class _DetailPageState extends State<DetailPage> {
     setState(() {});
   }
 
+  void _createBanner() {
+    _bannerAd = BannerAd(
+      size: AdSize.banner,
+      adUnitId: "ca-app-pub-6206858748012795/2162133795",
+      listener: BannerAdListener(onAdLoaded: (ad) {
+        setState(() {
+          isAdLoaded = true;
+        });
+        print("Banner Dijalankan");
+      }, onAdFailedToLoad: (ad, error) {
+        ad.dispose();
+      }),
+      request: const AdRequest(),
+    );
+    _bannerAd!.load();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,23 +119,26 @@ class _DetailPageState extends State<DetailPage> {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
           ),
-          Container(
-            margin: const EdgeInsets.all(5),
-            child: Column(
-              children: [
-                keterangan(context, gambarrumus, keteranganbangun),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        rumus(jenis),
-                        _bangun,
-                      ],
-                    ),
+          Column(
+            children: [
+              isAdLoaded
+                  ? SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: AdWidget(ad: _bannerAd!))
+                  : const SizedBox(),
+              keterangan(context, gambarrumus, keteranganbangun),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      rumus(jenis),
+                      _bangun,
+                    ],
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

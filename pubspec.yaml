@@ -33,11 +33,13 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  # change_app_package_name: any
   cupertino_icons: any
   # flutter_launcher_icons: any
   # flutter_launcher_name: any
   get: any
   google_fonts: any
+  google_mobile_ads: any
   package_info: any
 
 # flutter_icons:
@@ -53,6 +55,9 @@ dependencies:
 
 # Jalankan ini di terminal untuk mengganti nama aplikasi
 # flutter pub run flutter_launcher_name:main
+
+# Jalankan ini di terminal untuk mengganti package name
+# flutter pub run change_app_package_name:main com.am.bangundatardanruang
 
 dev_dependencies:
   flutter_test:
