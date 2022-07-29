@@ -115,7 +115,7 @@ Card keterangan(BuildContext context, String gambar, String keterangan) {
                     keterangan,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 12,
+                      fontSize: 15,
                     ),
                     textAlign: TextAlign.justify,
                   ),
@@ -131,7 +131,7 @@ Card keterangan(BuildContext context, String gambar, String keterangan) {
             "Klik Pada Gambar Untuk Memperbesar",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 12,
+              fontSize: 15,
             ),
           )
         ],
