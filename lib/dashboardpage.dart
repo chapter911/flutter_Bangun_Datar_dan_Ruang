@@ -12,11 +12,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  String _title = "Materi Bangun Datar";
-
-  List<Widget> listMateri = [];
-
-  bool isDatar = true;
+  List<Widget> listMateriDatar = [], listMateriRuang = [];
 
   @override
   void initState() {
@@ -25,33 +21,22 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   void getMateri() {
-    listMateri = [];
+    int totaldatar = bangunDatar.length;
+    int totalruang = bangunRuang.length;
 
-    int totaldata = isDatar ? bangunDatar.length : bangunRuang.length;
-
-    for (int i = 0; i < totaldata; i++) {
-      listMateri.add(
+    for (int i = 0; i < totaldatar; i++) {
+      listMateriDatar.add(
         InkWell(
           onTap: () {
-            isDatar
-                ? Get.to(() => const DetailPage(),
-                    arguments: [
-                      bangunDatar[i],
-                      rBangunDatar[i],
-                      keteranganDatar[i],
-                      isDatar,
-                    ],
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(seconds: 1))
-                : Get.to(() => const DetailPage(),
-                    arguments: [
-                      bangunRuang[i],
-                      rBangunRuang[i],
-                      keteranganRuang[i],
-                      isDatar,
-                    ],
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(seconds: 1));
+            Get.to(() => const DetailPage(),
+                arguments: [
+                  bangunDatar[i],
+                  rBangunDatar[i],
+                  keteranganDatar[i],
+                  true,
+                ],
+                transition: Transition.rightToLeft,
+                duration: const Duration(seconds: 1));
           },
           child: Card(
             color: warnaPrimary,
@@ -69,9 +54,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       child: Image.asset(
-                        isDatar
-                            ? "assets/${gBangunDatar[i]}.png"
-                            : "assets/${gBangunRuang[i]}.png",
+                        "assets/${gBangunDatar[i]}.png",
                         color: Colors.white,
                       ),
                     ),
@@ -83,7 +66,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         color: Colors.grey[300],
                         child: Center(
                           child: Text(
-                            isDatar ? bangunDatar[i] : bangunRuang[i],
+                            bangunDatar[i],
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -97,85 +80,122 @@ class _DashboardPageState extends State<DashboardPage> {
         ),
       );
     }
+
+    for (int i = 0; i < totalruang; i++) {
+      listMateriRuang.add(
+        InkWell(
+          onTap: () {
+            Get.to(() => const DetailPage(),
+                arguments: [
+                  bangunRuang[i],
+                  rBangunRuang[i],
+                  keteranganRuang[i],
+                  false,
+                ],
+                transition: Transition.rightToLeft,
+                duration: const Duration(seconds: 1));
+          },
+          child: Card(
+            color: warnaPrimary,
+            elevation: 5,
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: SizedBox(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    flex: 4,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Image.asset(
+                        "assets/${gBangunRuang[i]}.png",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Center(
+                      child: Container(
+                        color: Colors.grey[300],
+                        child: Center(
+                          child: Text(
+                            bangunRuang[i],
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_title),
-        actions: [information(context)],
-      ),
-      body: Stack(
-        children: [
-          Image.asset(
-            'assets/background.png',
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Pilih Materi"),
+          actions: [information(context)],
+          bottom: const TabBar(
+            indicatorColor: Colors.pink,
+            tabs: [
+              Tab(
+                child: Text("BANGUN DATAR"),
+              ),
+              Tab(
+                child: Text("BANGUN RUANG"),
+              ),
+            ],
           ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            child: Column(
+        ),
+        body: Stack(
+          children: [
+            Image.asset(
+              'assets/background.png',
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
+            ),
+            TabBarView(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _title = "Materi Bangun Datar";
-                            isDatar = true;
-                            getMateri();
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: isDatar ? Colors.red[800] : warnaPrimary,
-                        ),
-                        child: const Text(
-                          "Bangun Datar",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            _title = "Materi Bangun Ruang";
-                            isDatar = false;
-                            getMateri();
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: isDatar ? warnaPrimary : Colors.red[800],
-                        ),
-                        child: const Text(
-                          "Bangun Ruang",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                    ),
-                  ],
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Expanded(
+                    child: GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: listMateriDatar),
+                  ),
                 ),
-                const SizedBox(
-                  height: 10,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Expanded(
+                    child: GridView.count(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                        children: listMateriRuang),
+                  ),
                 ),
-                Expanded(
-                  child: GridView.count(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      children: listMateri),
-                )
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
