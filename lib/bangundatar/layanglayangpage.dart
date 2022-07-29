@@ -135,7 +135,7 @@ class _LayangLayangPageState extends State<LayangLayangPage> {
                 ),
               ),
               TextField(
-                controller: _sisiab,
+                controller: _sisibc,
                 textInputAction: TextInputAction.done,
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
