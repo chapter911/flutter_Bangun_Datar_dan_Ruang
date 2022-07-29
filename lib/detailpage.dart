@@ -122,22 +122,29 @@ class _DetailPageState extends State<DetailPage> {
           Column(
             children: [
               isAdLoaded
-                  ? SizedBox(
+                  ? Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width,
+                      color: Colors.white,
                       child: AdWidget(ad: _bannerAd!))
                   : const SizedBox(),
-              keterangan(context, gambarrumus, keteranganbangun),
+              Container(
+                margin: const EdgeInsets.all(10),
+                child: keterangan(context, gambarrumus, keteranganbangun),
+              ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      rumus(jenis),
-                      _bangun,
-                    ],
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        rumus(jenis),
+                        _bangun,
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ],
