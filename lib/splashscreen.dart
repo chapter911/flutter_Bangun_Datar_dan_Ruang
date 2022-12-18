@@ -18,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     getAppVersion().then((value) {
       _appversion = value;
+      setState(() {});
     });
 
     Future.delayed(const Duration(seconds: 1)).then((value) {

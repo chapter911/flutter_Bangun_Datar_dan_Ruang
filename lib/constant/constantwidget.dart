@@ -35,7 +35,7 @@ IconButton information(BuildContext context) {
                     ),
                   ),
                   const Text(
-                    "v.22.7.1",
+                    "v.22.12.1",
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.white,
@@ -90,7 +90,7 @@ Card keterangan(BuildContext context, String gambar, String keterangan) {
                                 Get.back();
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.red,
+                                backgroundColor: Colors.red,
                               ),
                               child: const Text("TUTUP"),
                             ),

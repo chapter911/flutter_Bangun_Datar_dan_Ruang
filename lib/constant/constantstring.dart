@@ -8,7 +8,7 @@ Future<String> getAppVersion() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     return packageInfo.version;
   } else {
-    return "22.7.1";
+    return "22.12.1";
   }
 }
 

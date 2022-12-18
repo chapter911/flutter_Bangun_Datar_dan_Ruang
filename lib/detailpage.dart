@@ -90,7 +90,7 @@ class _DetailPageState extends State<DetailPage> {
   void _createBanner() {
     _bannerAd = BannerAd(
       size: AdSize.banner,
-      adUnitId: "ca-app-pub-6206858748012795/2162133795",
+      adUnitId: "ca-app-pub-6206858748012795/5908567724",
       listener: BannerAdListener(onAdLoaded: (ad) {
         setState(() {
           isAdLoaded = true;
